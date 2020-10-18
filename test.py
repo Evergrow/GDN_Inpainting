@@ -7,7 +7,7 @@ import cv2
 from scipy.misc import imread
 from skimage.measure import compare_ssim as ssim
 from skimage.measure import compare_psnr as psnr
-from inpaint_model import DetInpaint
+from model import GDNInpainting
 from config import Config
 
 parser = argparse.ArgumentParser()
@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     config_path = os.path.join('config.yml')
     config = Config(config_path)
-    model = DetInpaint(config)
+    model = GDNInpainting(config)
     image = imread(args.image)
     mask = imread(args.mask)
     mask = (mask > 173).astype(np.uint8) * 255

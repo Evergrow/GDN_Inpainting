@@ -5,7 +5,7 @@ import tensorflow as tf
 from metrics import Progbar
 from config import Config
 from data_load import Dataset
-from inpaint_model import DetInpaint
+from model import GDNInpainting
 
 
 def main():
@@ -30,7 +30,7 @@ def main():
         val_mask = dataset.val_mask
 
     # Init the model
-    model = DetInpaint(config)
+    model = GDNInpainting(config)
 
     # Build train model
     gen_loss, dis_loss, psnr = model.build_whole_model(batch_img, batch_mask)
