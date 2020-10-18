@@ -3,15 +3,16 @@ from metrics import *
 from loss import *
 
 
-class DetInpaint(object):
+class GDNInpainting(object):
     def __init__(self, config):
         self.config = config
+        self.img_size = config.INPUT_SIZE
         self.res_num = config.RES_NUM
         self.base_channel = config.BASE_CHANNEL
         self.sample_num = config.SAMPLE_NUM
         self.exp_base = config.EXPBASE
         self.gamma = config.GAMMA
-        self.model_name = 'inpaint'
+        self.model_name = 'Inpainting'
         self.psnr = PSNR(255.0)
         self.gen_optimizer = tf.train.AdamOptimizer(
             learning_rate=float(config.LR),
@@ -66,7 +67,7 @@ class DetInpaint(object):
         weight = tf.pow(tf.constant(float(self.exp_base)), weight)
 
         # mask hole ratio
-        hr = tf.reduce_sum(masks, axis=[1, 2, 3]) / (256 * 256)
+        hr = tf.reduce_sum(masks, axis=[1, 2, 3]) / (self.img_size * self.img_size)
 
         # calculate validation loss
         gen_loss = 0
@@ -117,7 +118,7 @@ class DetInpaint(object):
         weight = tf.pow(tf.constant(float(self.exp_base)), weight)
 
         # mask hole ratio
-        hr = tf.reduce_sum(masks, axis=[1, 2, 3]) / (256 * 256)
+        hr = tf.reduce_sum(masks, axis=[1, 2, 3]) / (self.img_size * self.img_size)
 
         with tf.variable_scope('inpaint_loss'):
             # discriminator loss
