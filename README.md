@@ -25,12 +25,12 @@ cd GDN_Inpainting
 * Collect masks: We upload the [script](https://github.com/Evergrow/GDN_Inpainting/blob/master/mask_processing.py) processing raw mask [QD-IMD](https://github.com/karfly/qd-imd) as the training mask. [Liu et al.](https://arxiv.org/abs/1804.07723) provides 12k [irregular masks](https://nv-adlr.github.io/publication/partialconv-inpainting) as the testing mask. Note that the square mask is not a good choice for training our framewrok, while the test mask is freestyle.
 
 ### Training
-* Modify the gpu id, dataset path, mask path and checkpoint path in the [config file](https://github.com/Evergrow/GDN_Inpainting/blob/master/config.yml). Adjusting some other parameters if you like.
-* Run ```python train.py``` and view training progress ```tensorbord --logdir [path to checkpoints]```
+* Modify gpu id, dataset path, mask path, and checkpoint path in the [config file](https://github.com/Evergrow/GDN_Inpainting/blob/master/config.yml). Adjusting some other parameters if you like.
+* Run ```python train.py``` and view training progress ```tensorboard --logdir [path to checkpoints]```
 
 ### Testing
 Choose the input image, mask and model to test:
 ```python
-python test.py --image [input path] --mask [mask path] --output [output path] --checkpoint_dir [model paht]
+python test.py --image [input path] --mask [mask path] --output [output path] --checkpoint_dir [model path]
 ```
 
