@@ -33,4 +33,7 @@ Choose the input image, mask and model to test:
 ```python
 python test.py --image [input path] --mask [mask path] --output [output path] --checkpoint_dir [model path]
 ```
+### Pretrained models
+[Celeba-HQ](https://drive.google.com/drive/folders/1vJ0hhtPtKqp-nj8CAVGuKk3ZKlZ3JCX5?usp=sharing) and [Places2](https://drive.google.com/drive/folders/1vQhKOyzFJM_upEyPNzXfmSmb9ZCxsvjE?usp=sharing) pretrained models are released for quick testing. Download the models using Google Drive links and move them into your ./checkpoints directory.
 
+##
